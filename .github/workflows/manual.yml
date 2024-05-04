@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - run: git pull
     - name: Change last_call.txt using python
       run: python ./.github/workflows/change.py
     - name: Commit report
