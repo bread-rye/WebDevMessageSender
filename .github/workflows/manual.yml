@@ -30,7 +30,7 @@ jobs:
     - name: Commit report for re-runs
       continue-on-error: true
       run: |
-        git add last_call.txt
+        git add .
         git rebase --continue
         git status
     - name: Push 
