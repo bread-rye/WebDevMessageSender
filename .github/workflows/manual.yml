@@ -9,12 +9,6 @@ on: workflow_dispatch
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Changes last_call.txt to current time
-  rundeadman:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Run Deadman Switch
-      run: python./index.py
   changetxt:
     runs-on: ubuntu-latest
     steps:
