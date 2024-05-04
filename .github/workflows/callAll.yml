@@ -1,0 +1,27 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on: 
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "url to input in index.py"
+        required: true
+        type: string
+      message:
+        description: "payload for url"
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Changes last_call.txt to current time
+  rundeadman:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run Deadman Switch
+      run: python ./index.py "${{inputs.url}}" "${{inputs.message}}"
