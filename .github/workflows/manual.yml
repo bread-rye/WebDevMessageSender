@@ -25,13 +25,7 @@ jobs:
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
         git add last_call.txt
-        git status
         git commit -m "Update last_call.txt"
-        git status
-        git fetch
-        git status
-        git pull
+        git pull --rebase
         git status
         git push
-        gitk -all
-
