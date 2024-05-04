@@ -8,8 +8,8 @@
                     if (timeElapsed > 5) {
                         call = window.location.href.split("#")[1];
                         let [url, mess] = call.split("7c");
-                        url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&')));
-                        mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&')));
+                        url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&'));
+                        mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&'));
                         
                         getAPI(url, mess)
                     } 
