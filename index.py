@@ -18,7 +18,7 @@ def getAPI(u, m):
     callAPI(u, m, greq.json())
 
 last_call = open("last_call.txt", "r+")
-t_i = float(last_call.readLine())
+t_i = float(last_call.readline())
 now = time.time()
 timeElapsed = (now-t_i)/60
 
