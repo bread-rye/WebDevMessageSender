@@ -20,9 +20,9 @@
                 const lastLoad = document.getElementById("last_call");
                 const last_call = await fetch("last_call.txt").then(f => f.text()).then(i => {return i;});
                 const t_i = parseFloat(last_call);
-                lastLoad.innerText = "Last Called: " + t_i.toString();
 
                 const now = Date.now() / 1000;
+                lastLoad.innerText = "Last Called: " + now.toString();
                 const timeElapsed = (now - t_i) / 60;
                 
                 call = window.location.href.split("#")[1];
