@@ -16,7 +16,7 @@ jobs:
     - name: Pull
       run: git pull
     - name: Run Deadman Switch
-      run: python ./index.py "${{secrets.URL}}" "${{secrets.MESSAGE}}"
+      run: python ./index.py "${{secrets.URL}}" "${{secrets.PAYLOAD}}"
     - name: Push
       continue-on-error: true
       run: |
