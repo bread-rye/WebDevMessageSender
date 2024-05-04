@@ -7,14 +7,16 @@ def decode(s):
     return decodeURIComponent(re.sub("[0-9a-f]{2}", "%$&"))
 
 def callAPI(url, message, body):
-    requests.post(url, json= {
+    preq = requests.post(url, json= {
         "method":"POST",
         "headers": {"Content-Type": "application/json"},
         "body": body | {"content":message}
         })
+    console.log(preq)
 
 def getAPI(u, m):
     greq = requests.get(u)
+    console.log(greq)
     callAPI(u, m, greq.json())
 
 last_call = open("last_call.txt", "r+")
