@@ -33,4 +33,5 @@ if timeElapsed>5:
 else:
     last_call.seek(0)
     last_call.write(str(now))
+print(now)
 last_call.close()
