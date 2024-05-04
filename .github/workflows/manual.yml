@@ -30,6 +30,8 @@ jobs:
         git status
         git fetch
         git status
-        git push
+        git pull
         git status
+        git push
+        gitk -all
 
