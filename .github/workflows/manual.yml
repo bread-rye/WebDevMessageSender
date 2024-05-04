@@ -28,6 +28,6 @@ jobs:
     - name: commit changed files
       run: git commit -m "Update last_call.txt"
     - name: fetch from master
-      run: git fetch origin master
-    - name: push code to master
-      run: git push origin HEAD:master
+      run: git fetch origin main
+    - name: push code to main
+      run: git push origin HEAD:main
