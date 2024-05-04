@@ -29,6 +29,8 @@ jobs:
       run: python ./index.py "${{inputs.url}}" "${{inputs.message}}"
     - name: Push
       run: |
+        git config --global user.name 'Github Actions Bot'
+        git config --global user.email '<>'
         git add last_call.txt
         git commit -m "Update last_call.txt"
         git push
