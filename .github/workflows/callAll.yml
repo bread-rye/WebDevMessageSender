@@ -21,10 +21,6 @@ jobs:
       run: |
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
-        git status
         git add last_call.txt
-        git status
         git commit -m "Update last_call.txt"
-        git status
         git push
-        git status
