@@ -1,44 +1,58 @@
 <html>
     <head>
         <script>
-            function initialize() {
-                const now = Date.now() / 1000;
+            function decode(s) {return decodeURIComponent(s.replace(/[0-9a-f]{2}/g, '%$&'));}
+            
+            async function callAPI(url, message, body){ 
+                fetch(url, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({...body, content: message})
+                    });
+            }
+            
+            function getAPI(u, m) {
+                 const response = fetch(u);
+                 response.then(f=> f.text()).then(i=> callAPI(u, m, JSON.parse(i)));
+            }
+
+            async function initialize() {
                 const lastLoad = document.getElementById("last_call");
-                const t_i = parseFloat(lastLoad.innerText);
+                const last_call = await fetch("last_call.txt").then(f => f.text()).then(i => {return i;});
+                const t_i = parseFloat(last_call);
+                lastLoad.innerText = "Last Called: " + t_i.toString();
+
+                const now = Date.now() / 1000;
                 const timeElapsed = (now - t_i) / 60;
                 
+                call = window.location.href.split("#")[1];
+                let [url, mess1, n, mess2, key] = call.split("7c");
+                url = decode(url); mess1 = decode(mess1); mess2 = decode(mess2); key = decode(key);
+                mess = mess1 + Math.round(timeElapsed-0.5).toString() + mess2;
+                console.log(url); console.log(mess); console.log(key);
+
                 if (timeElapsed > 5) {
                     console.log("Past 5 minutes!");
-                    call = window.location.href.split("#")[1];
-                    let [url, mess] = call.split("7c");
-                    url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&'));
-                    mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&'));
                     
                     getAPI(url, mess);
                 } 
                 else {
-                    lastLoad.innerText = now.toString();
-                }
-            }
-            
-            async function callAPI(url, message, body){    
-                fetch(url, {
+                    console.log("Within 5 minutes...");
+                    fetch("https://api.github.com/repos/bread-rye/WebDevMessageSender/actions/runs/8949732744/rerun", {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'},
-                    ...body, 
-                    content: message});
-            }
-            
-            function getAPI(u, m) {
-                 const response = fetch(url);
-                 response.then(f=> f.text()).then(i=> callAPI(u, m, JSON.parse(i)));
+                        "Accept": "application/vnd.github+json",
+                        "Authorization": `Bearer ${key}`,
+                        "X-GitHub-Api-Version": "2022-11-28"
+                        }
+                    });
+                }
             }
 
         </script>
     </head>
     <body onload="initialize()">
         loaded
-        <p id="last_call">1714803137.994</p>
+        <p id="last_call">XXXXXXXXXX.XXX</p>
     </body>
 </html>
