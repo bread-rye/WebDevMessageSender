@@ -35,5 +35,6 @@ jobs:
         git status
     - name: Push 
       run: |
+        git status
         git push
         git status
