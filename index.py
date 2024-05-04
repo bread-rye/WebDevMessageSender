@@ -7,7 +7,7 @@ def decode(s):
     return decodeURIComponent(re.sub("[0-9a-f]{2}", "%$&"))
 
 def callAPI(url, message, body):
-    preq = requests.post(url, json={body | {"content":message}})
+    preq = requests.post(url, json=body | {"content":message})
     print(preq)
 
 def getAPI(u, m):
