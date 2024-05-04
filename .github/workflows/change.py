@@ -1,5 +1,4 @@
-from datetime import datetime
-time = datetime.now
+import time
 f = open("last_call.txt", "w")
-f.write(str(round(time(), 3)))
+f.write(str(round(time.time(), 3)))
 f.close()
