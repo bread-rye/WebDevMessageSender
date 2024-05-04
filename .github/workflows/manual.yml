@@ -19,6 +19,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: Change last_call.txt using python
       run: python ./.github/workflows/change.py
+    - name: Check directory
+      run: ls
     - name: Commit report
       run: |
         git pull
