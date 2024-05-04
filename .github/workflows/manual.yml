@@ -34,8 +34,12 @@ jobs:
         git add last_call.txt
         git commit -m "Update last_call.txt"
         git status
+    - name: Status
+      run: git status
     - name: Push 
       run: |
         git status
         git push
         git status
+    - name: Status
+      run: git status
