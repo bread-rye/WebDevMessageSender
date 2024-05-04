@@ -23,5 +23,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name Pull
+      run: git pull
     - name: Run Deadman Switch
       run: python ./index.py "${{inputs.url}}" "${{inputs.message}}"
+    - name: Push
+      run: git push
+      
