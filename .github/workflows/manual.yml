@@ -21,6 +21,7 @@ jobs:
       run: python ./.github/workflows/change.py
     - name: Commit report
       run: |
+        git fetch
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
         git add last_call.txt
