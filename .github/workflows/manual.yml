@@ -28,7 +28,10 @@ jobs:
         git commit -m "Update last_call.txt"
         git pull --rebase
         git status
+    - name: Commt report for re-runs
+      run: |
         git add last_call.txt
         git commit -m "Update last_call.txt"
         git status
-        git push
+    - name: Push 
+      run: git push
