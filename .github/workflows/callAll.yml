@@ -4,17 +4,7 @@ name: Manual workflow
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-on: 
-  workflow_dispatch:
-    inputs:
-      url:
-        description: "url to input in index.py"
-        required: true
-        type: string
-      message:
-        description: "payload for url"
-        required: true
-        type: string
+on: workflow_dispatch
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,7 +16,7 @@ jobs:
     - name: Pull
       run: git pull
     - name: Run Deadman Switch
-      run: python ./index.py "${{inputs.url}}" "${{inputs.message}}"
+      run: python ./index.py "${{secrets.URL}}" "${{secrets.MESSAGE}}"
     - name: Push
       run: |
         git config --global user.name 'Github Actions Bot'
