@@ -28,4 +28,5 @@ jobs:
         git commit -m "Update last_call.txt"
         git pull --rebase
         git status
+        git add last_call.txt
         git push
