@@ -21,25 +21,18 @@ jobs:
       run: python ./.github/workflows/change.py
     - name: Commit report
       run: |
-        git status
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
         git add last_call.txt
         git commit -m "Update last_call.txt"
         git pull --rebase
-    - name: Status
-      run: git status
     - name: Commt report for re-runs
+      if: false
       run: |
         git add last_call.txt
         git commit -m "Update last_call.txt"
         git status
-    - name: Status
-      run: git status
     - name: Push 
       run: |
-        git status
         git push
         git status
-    - name: Status
-      run: git status
