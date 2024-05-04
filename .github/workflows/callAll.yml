@@ -18,6 +18,7 @@ jobs:
     - name: Run Deadman Switch
       run: python ./index.py "${{secrets.URL}}" "${{secrets.MESSAGE}}"
     - name: Push
+      continue-on-error: true
       run: |
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
