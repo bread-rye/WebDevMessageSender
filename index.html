@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script>
+            function initialize() {
+                function continue(e, d) {
+                    const t_i = parseFloat(d);
+                    const timeElapsed = (now - t_i) / 60;
+                    if (timeElapsed > 5) {
+                        call = window.location.href.split("#")[1];
+                        let [url, mess] = call.split("7c");
+                        url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&')));
+                        mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&')));
+                        
+                        getAPI(url, mess)
+                    } 
+                    else {
+                        fs.writeFile('last_call.txt', now.toString(), (err) => { if (err) console.error(err);})
+                    }
+            
+                const fs = require('fs');
+            
+                const now = Date.now() / 1000;
+            
+                fs.readFile('last_call.txt', 'utf8', (err, data) => continue(err, data))
+            }
+            
+            async function callAPI(url, message, body){    
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'},
+                    ...body, 
+                    content: message});
+            }
+            
+            function getAPI(u, m) {
+                 const response = fetch(url);
+                 response.then(f=> f.text()).then(i=> callAPI(u, m, JSON.parse(i)));
+            }
+
+        </script>
+    </head>
+    <body onload="initialize()">
+        loaded
+    </body>
+</html>
