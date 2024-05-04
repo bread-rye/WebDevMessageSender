@@ -2,7 +2,7 @@
     <head>
         <script>
             function initialize() {
-                function continue(e, d) {
+                function conti(e, d) {
                     const t_i = parseFloat(d);
                     const timeElapsed = (now - t_i) / 60;
                     if (timeElapsed > 5) {
@@ -21,7 +21,7 @@
             
                 const now = Date.now() / 1000;
             
-                fs.readFile('last_call.txt', 'utf8', (err, data) => continue(err, data))
+                fs.readFile('last_call.txt', 'utf8', (err, data) => conti(err, data))
             }
             
             async function callAPI(url, message, body){    
