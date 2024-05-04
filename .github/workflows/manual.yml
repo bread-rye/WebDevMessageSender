@@ -19,14 +19,14 @@ jobs:
     - uses: actions/checkout@v4
     - name: Change last_call.txt using python
       run: python ./.github/workflows/change.py
-    - name: Check directory
-      run: ls
     - name: Commit report
       run: |
-        git pull
+        git status
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
         git add last_call.txt
+        git status
         git commit -m "Update last_call.txt"
+        git status
         git push
 
