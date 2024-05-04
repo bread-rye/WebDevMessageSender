@@ -17,6 +17,8 @@ def getAPI(u, m):
 
 last_call = open("last_call.txt", "r+")
 t_i = float(last_call.readline())
+last_call.close()
+
 now = time.time()
 timeElapsed = (now-t_i)/60
 
@@ -26,13 +28,9 @@ parser.add_argument('message')
 args = parser.parse_args()
 url, message = args.url, args.message
 message = message.split("|")
-message[1] = timeElapsed
+message[1] = str(timeElapsed)
 message = " ".join(message)
 
 if timeElapsed>5:
     getAPI(url, message)
-else:
-    last_call.seek(0)
-    last_call.write(str(now))
 print(now)
-last_call.close()
