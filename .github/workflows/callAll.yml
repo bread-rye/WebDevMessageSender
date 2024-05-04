@@ -27,4 +27,4 @@ jobs:
         git commit -m "Update last_call.txt"
         git status
         git push
-      
+        git status
