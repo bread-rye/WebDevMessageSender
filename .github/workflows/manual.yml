@@ -26,14 +26,7 @@ jobs:
         git config --global user.email '<>'
         git add last_call.txt
         git commit -m "Update last_call.txt"
-        git pull --rebase
-    - name: Commit report for re-runs
-      continue-on-error: true
+    - name: Force Push 
       run: |
-        git add .
-        git rebase --continue
-        git status
-    - name: Push 
-      run: |
-        git push
+        git push --force
         git status
