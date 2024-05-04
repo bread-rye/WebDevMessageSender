@@ -20,14 +20,15 @@ jobs:
     - name: Change last_call.txt using python
       run: python ./.github/workflows/change.py
     - name: Commit report
+      continue-on-error: true
       run: |
         git config --global user.name 'Github Actions Bot'
         git config --global user.email '<>'
         git add last_call.txt
         git commit -m "Update last_call.txt"
         git pull --rebase
-    - name: Commt report for re-runs
-      if: false
+    - name: Commit report for re-runs
+      continue-on-error: true
       run: |
         git add last_call.txt
         git commit -m "Update last_call.txt"
