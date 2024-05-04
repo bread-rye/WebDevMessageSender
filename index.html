@@ -2,27 +2,23 @@
     <head>
         <script>
             function initialize() {
-                function conti(e, d) {
-                    const t_i = parseFloat(d);
-                    const timeElapsed = (now - t_i) / 60;
-                    if (timeElapsed > 5) {
-                        call = window.location.href.split("#")[1];
-                        let [url, mess] = call.split("7c");
-                        url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&'));
-                        mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&'));
-                        
-                        getAPI(url, mess)
-                    } 
-                    else {
-                        fs.writeFile('last_call.txt', now.toString(), (err) => { if (err) console.error(err);})
-                    }
-                }
-            
-                const fs = require('fs');
-            
                 const now = Date.now() / 1000;
-            
-                fs.readFile('last_call.txt', 'utf8', (err, data) => conti(err, data))
+                const lastLoad = document.getElementById("last_call");
+                const t_i = parseFloat(lastLoad.innerText);
+                const timeElapsed = (now - t_i) / 60;
+                
+                if (timeElapsed > 5) {
+                    console.log("Past 5 minutes!");
+                    call = window.location.href.split("#")[1];
+                    let [url, mess] = call.split("7c");
+                    url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&'));
+                    mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&'));
+                    
+                    getAPI(url, mess)
+                } 
+                else {
+                    lastLoad.innerText = now.toString())
+                }
             }
             
             async function callAPI(url, message, body){    
@@ -43,5 +39,6 @@
     </head>
     <body onload="initialize()">
         loaded
+        <p id="last_call">1714803137.994</p>
     </body>
 </html>
