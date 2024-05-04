@@ -32,5 +32,5 @@ if timeElapsed>5:
     getAPI(url, message)
 else:
     last_call.seek(0)
-    last_call.write(now)
+    last_call.write(str(now))
 last_call.close()
