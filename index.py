@@ -12,11 +12,11 @@ def callAPI(url, message, body):
         "headers": {"Content-Type": "application/json"},
         "body": body | {"content":message}
         })
-    console.log(preq)
+    print(preq)
 
 def getAPI(u, m):
     greq = requests.get(u)
-    console.log(greq)
+    print(greq)
     callAPI(u, m, greq.json())
 
 last_call = open("last_call.txt", "r+")
