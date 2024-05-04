@@ -14,10 +14,10 @@
                     url = decodeURIComponent(url.replace(/[0-9a-f]{2}/g, '%$&'));
                     mess = decodeURIComponent(mess.replace(/[0-9a-f]{2}/g, '%$&'));
                     
-                    getAPI(url, mess)
+                    getAPI(url, mess);
                 } 
                 else {
-                    lastLoad.innerText = now.toString()
+                    lastLoad.innerText = now.toString();
                 }
             }
             
