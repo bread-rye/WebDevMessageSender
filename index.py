@@ -38,7 +38,7 @@ for i in range(10):
     if timeElapsed < rangebot[i] or timeElapsed > rangecap[9]:
         break
     print(f"Testing {rangebot[i]} < {timeElapsed} < {rangecap[i]}. tE: {timeElapsed} % tD: {time_diff[i]} = {timeElapsed%time_diff[i]}")
-    show = rangebot[i] < timeElapsed < rangecap[i] and timeElapsed % time_diff[i] < 5.5
+    show = rangebot[i] < timeElapsed < rangecap[i] and timeElapsed % time_diff[i] < 5
     
     if show: #make the message
         if i > 5:
